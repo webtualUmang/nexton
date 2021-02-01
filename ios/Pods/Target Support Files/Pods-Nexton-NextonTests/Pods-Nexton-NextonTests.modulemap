@@ -1,0 +1,6 @@
+module Pods_Nexton_NextonTests {
+  umbrella header "Pods-Nexton-NextonTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
