@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    View, Text, SafeAreaView, StatusBar, TouchableOpacity, Image, Linking,
+    View, Text, SafeAreaView, StatusBar, TouchableOpacity, Image, Linking,PermissionsAndroid,Platform,
     StyleSheet, ActivityIndicator, SectionList, ScrollView, LogBox
 } from 'react-native';
 
@@ -18,6 +18,12 @@ import Webservice from '../../Constants/API'
 import { ApiURL } from '../../Constants/ApiURL'
 import Toast from 'react-native-simple-toast';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Geolocation from '@react-native-community/geolocation';
+import Geocoder from 'react-native-geocoding';
+
+
+var latitude = ''
+var longitude = ''
 
 export default class DrVisitDetail extends Component {
     constructor(props) {
@@ -26,6 +32,9 @@ export default class DrVisitDetail extends Component {
             isLoading: false,
             DoctorInfo : {},
             Arr_Dr_TimeTable : [],
+            longitude : 0.0,
+            latitude : 0.0,
+            address : '',
             HospitalData: JSON.parse(props.route.params.hospital_data),
         };
     }
@@ -34,9 +43,72 @@ export default class DrVisitDetail extends Component {
     componentDidMount() {
         LogBox.ignoreAllLogs = true;
         console.log("Hospital Data : " + JSON.stringify(this.state.HospitalData))
+
+        this.requestLocationPermission()
         this.getData()
+        
     }
 
+    requestLocationPermission = async () => {
+        if (Platform.OS === 'ios') {
+          this.getOneTimeLocation();
+        } else {
+          try {
+            const granted = await PermissionsAndroid.request(
+              PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+              {
+                title: 'Location Access Required',
+                message: 'This App needs to Access your location',
+              },
+            );
+            if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+              //To Check, If Permission is granted
+              this.getOneTimeLocation();
+            } else {
+              console.log('Permission Denied');
+            }
+          } catch (err) {
+            console.warn(err);
+          }
+        }
+    };
+
+      getOneTimeLocation = async () => {
+        Geolocation.getCurrentPosition(
+          //Will give you the current location
+          (position) => {
+    
+            latitude = String(position.coords.latitude)
+            longitude = String(position.coords.longitude)
+
+                this.setState({longitude : position.coords.longitude, latitude : position.coords.latitude})
+
+                console.log("Longitude : "+position.coords.longitude)
+                console.log("Latitude : "+position.coords.latitude)
+
+                Geocoder.init(ConstantKeys.GOOGLE_KEY)
+                Geocoder.from({
+                    latitude : position.coords.latitude,
+                    longitude : position.coords.longitude
+                }).then(json => {
+
+                    var addressComponent = json.results[0].formatted_address;
+                    console.log("Address :- "+JSON.stringify(addressComponent));
+
+                    this.setState({address : addressComponent})
+                })
+                .catch(error => console.warn(error));
+          },
+          (error) => {
+            console.log(error.message);
+          },
+          {
+            enableHighAccuracy: false,
+            timeout: 100000,
+            maximumAge: 3600000
+          },
+        );
+      };
 
     getData = async () => {
         try {
@@ -102,11 +174,15 @@ export default class DrVisitDetail extends Component {
 
     //API Doctor IN
     API_DOCTOR_IN = () => {
+        // alert(this.state.latitude)
         this.setState({ isLoading: true })
         Webservice.post(ApiURL.DoctorIn, {
             users_id: this.state.DoctorInfo.doctor_id,
             hospital_doctor_schedule_id: this.state.HospitalData.hospital_doctor_schedule_id,
-            authcode : '0'
+            latitude : this.state.latitude,
+            longitude : this.state.longitude,
+            address : this.state.address,
+            authcode : '0',
         })
             .then(response => {
                 //   this.setState({spinner: false});
@@ -140,9 +216,11 @@ export default class DrVisitDetail extends Component {
         Webservice.post(ApiURL.DoctorOUT, {
             users_id: this.state.DoctorInfo.doctor_id,
             hospital_doctor_schedule_id: this.state.HospitalData.hospital_doctor_schedule_id,
+            latitude : this.state.latitude,
+            longitude : this.state.longitude,
+            address : this.state.address,
             authcode : '0'
-        })
-            .then(response => {
+        }).then(response => {
                 //   this.setState({spinner: false});
                 if (response == null) {
                     this.setState({ isLoading: false });
@@ -176,13 +254,23 @@ export default class DrVisitDetail extends Component {
 
     btnInTap = () =>{
         requestAnimationFrame(()=>{
-            this.API_DOCTOR_IN()
+
+            if(this.state.latitude == 0.0 || this.state.longitude == 0.0){
+                this.getOneTimeLocation()
+                Toast.showWithGravity('We are not getting your location, Please re open app or allow location permission from setting', Toast.SHORT, Toast.BOTTOM);
+            }else{
+                this.API_DOCTOR_IN()
+            }
         })
     }
 
     btnOutTap = () =>{
         requestAnimationFrame(()=>{
-            this.API_DOCTOR_OUT()
+            if(this.state.latitude == '' || this.state.longitude == ''){
+                Toast.showWithGravity('We are not getting your location, Please re open app or allow location permission from setting', Toast.SHORT, Toast.BOTTOM);
+            }else{
+                this.API_DOCTOR_OUT()
+            }
         })
     }
 

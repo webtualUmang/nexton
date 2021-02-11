@@ -48,6 +48,42 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:697224049138:android:135c0a9081660d7790fb6b",
+        "android_client_info": {
+          "package_name": "com.nexton.apps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "697224049138-g7ughs8ej890sv994v3nvrv0g7kgunqv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpPhF49i0QZNcofG_Vq2WXY4CfjOYOm-g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "697224049138-g7ughs8ej890sv994v3nvrv0g7kgunqv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "697224049138-j598eeak46c7rqdr0bicaipe9ul95eb4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.nexton"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

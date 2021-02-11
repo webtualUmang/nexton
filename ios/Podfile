@@ -24,6 +24,10 @@ target 'Nexton' do
   
   pod 'RNFBMessaging', :path => '../node_modules/@react-native-firebase/messaging'
   
+  pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
+
+  pod 'react-native-geolocation', :path => '../node_modules/@react-native-community/geolocation'
+
   target 'NextonTests' do
     inherit! :complete
     # Pods for testing

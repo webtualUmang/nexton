@@ -1,6 +1,6 @@
 export const ApiURL = {
     
-    BaseURL : 'http://mygit.xyz/api.asmx/',
+    BaseURL : 'http://panel.nextonhealthcare.in/api.asmx/',
 
     Login : 'login',
 
@@ -9,6 +9,7 @@ export const ApiURL = {
     HospitalTimetable : 'hospitalTimetable',
     GetDoctorInfobyID : 'getdoctorinfobyid',
     SendMessage :       'sendMessage',
+    DailyReport : 'dailyreport',
 
     //Doctor URL
     GetDoctorInfo : 'getdoctorinfo',
@@ -17,4 +18,8 @@ export const ApiURL = {
     DoctorIn :       'doctorin',
     DoctorOUT :       'doctorout',
     Get_Messages :      'getMessages',
+
+    //Admin URL
+    GetTransactions : 'getTransactions',
+    AddTransactions : 'addTransactions'
 };

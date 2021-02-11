@@ -87,6 +87,7 @@ export default class HospitalDashboard extends Component {
     }
   }
 
+
   //Action Methods
   btnMenuTap = () => {
     requestAnimationFrame(() => {
@@ -94,11 +95,20 @@ export default class HospitalDashboard extends Component {
     })
   }
 
+
   btnTimeTableTap = () => {
     requestAnimationFrame(() => {
       this.props.navigation.navigate('TimeTable')
     })
   }
+
+
+  btnDailyReportTap = () => {
+    requestAnimationFrame(() => {
+      this.props.navigation.navigate('DailyReport')
+    })
+  }
+
 
   render() {
     let MenuIcon = IMG.OtherFlow.MenuIcon
@@ -143,38 +153,36 @@ export default class HospitalDashboard extends Component {
                   />
                 </View>
 
-                <View style={{marginLeft:20,marginRight:20,flexDirection:'row',marginTop:30,height: Dimensions.get('window').width /2 - 50,
-                    paddingTop:10,paddingBottom:10,shadowColor: CommonColors.shadowColor, borderRadius: 10,backgroundColor:CommonColors.whiteColor}}>
+                <View style={styles.GradientMainView}>
                     
                 <LinearGradient colors={[CommonColors.denim, CommonColors.governor_bay]}
                   start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
-                  style={{flex:0.5,marginRight:10,borderRadius:10,
-                          alignItems:'center',justifyContent:'center'}}>
+                  style={{flex:0.5,marginRight:10,borderRadius:10,alignItems:'center',justifyContent:'center'}}>
+
                     <TouchableOpacity style={{flex:1, alignItems:'center',justifyContent:'center'}}
                           onPress={() => this.btnTimeTableTap()}>
 
-                        <Text style={{marginLeft:10,marginRight:10, fontSize:SetFontSize.setDimension.ts18,textAlign:'center',
-                              color:CommonColors.whiteColor, fontFamily:ConstantKeys.INTER_BOLD}}>
+                        <Text style={styles.txtGradient}>
                           Time Table
                         </Text>
                     </TouchableOpacity>
                   </LinearGradient>
 
-                  {/* <LinearGradient colors={[CommonColors.denim, CommonColors.governor_bay]}
+                  <LinearGradient colors={[CommonColors.denim, CommonColors.governor_bay]}
                   start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
-                  style={{flex:0.5,marginLeft:10,borderRadius:10,
-                          alignItems:'center',justifyContent:'center'}}>
+                  style={{flex:0.5,marginLeft:10,borderRadius:10, alignItems:'center',justifyContent:'center'}}>
+                  
                     <TouchableOpacity style={{flex:1, alignItems:'center',justifyContent:'center'}}
-                          onPress={() => this.btnNextVisitTap()}>
+                          onPress={() => this.btnDailyReportTap()}>
 
-                        <Text style={{marginLeft:10,marginRight:10, fontSize:SetFontSize.setDimension.ts18,textAlign:'center',
-                              color:CommonColors.whiteColor, fontFamily:ConstantKeys.INTER_BOLD}}>
-                          Next 7 days Visit
+                        <Text style={styles.txtGradient}>
+                          Daily Reports
                         </Text>
                     </TouchableOpacity>
-                  </LinearGradient> */}
+                  </LinearGradient>
 
               </View>
+
               </ScrollView>
               
             </View>
@@ -217,6 +225,17 @@ const styles = StyleSheet.create({
   txtTimeTable: {
     color: CommonColors.whiteColor,
     fontSize: SetFontSize.setDimension.ts20,
+    fontFamily: ConstantKeys.INTER_BOLD
+  },
+  GradientMainView: {
+    marginLeft: 20, marginRight: 20, flexDirection: 'row', marginTop: 30,
+    height: Dimensions.get('window').width / 2 - 50,
+    paddingTop: 10, paddingBottom: 10, shadowColor: CommonColors.shadowColor,
+    borderRadius: 10, backgroundColor: CommonColors.whiteColor
+  },
+  txtGradient: {
+    marginLeft: 10, marginRight: 10, fontSize: SetFontSize.setDimension.ts18,
+    textAlign: 'center', color: CommonColors.whiteColor,
     fontFamily: ConstantKeys.INTER_BOLD
   }
 })

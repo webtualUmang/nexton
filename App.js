@@ -24,9 +24,12 @@ import Navi from './SourceFiles/Constants/Navi'
 
 import * as NavigationService from './SourceFiles/Constants/NavigationService'
 
+import ConstantColor, { CommonColors } from './SourceFiles/Constants/ColorConstant'
+
 //Firebase
 import messaging from '@react-native-firebase/messaging';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { showMessage, hideMessage } from "react-native-flash-message";
 
 
 class App extends React.Component {
@@ -39,6 +42,7 @@ class App extends React.Component {
 
   componentWillUnmount() {
     this.NotificationGet();
+    clearTimeout()
   }
 
   async checkApplicationPermission() {
@@ -77,41 +81,106 @@ class App extends React.Component {
   }
 
   async NotificationGet(){
-    // Assume a message-notification contains a "type" property in the data payload of the screen to open
+    
 
+    // App is in Forground State
+    messaging().onMessage(remoteMessage => {
+      console.log(
+        'Notification caused app to open state:',
+        remoteMessage,
+      );
+
+      // For Display Notification Banner when app is in Forground State
+      showMessage({
+        message: remoteMessage.notification.title,
+        description : remoteMessage.notification.body,
+        type: "info",
+        duration : 3000,
+        backgroundColor : CommonColors.governor_bay,
+        onPress : () => {
+
+            /* THIS FUNC/CB WILL BE CALLED AFTER MESSAGE PRESS */
+
+            var data = remoteMessage.data ?? null
+
+            if(data != null){
+              if(data.category == 'dailyreport'){
+                NavigationService.navigate('DailyReport')
+              }
+              else if(data.category == 'doctornotification'){
+                NavigationService.navigate('DrNotification')
+              }
+              else{
+                
+              }
+            }else{
+              // NavigationService.navigate('DrNotification')
+            }
+        },
+      });
+    })
+
+    // App is in Background State
     messaging().onNotificationOpenedApp(remoteMessage => {
       console.log(
         'Notification caused app to open from background state:',
-        remoteMessage.notification,
+        remoteMessage
       );
 
         // NavigationService.isReadyRef.current = true;
         // NavigationService.navigate('DrNotification');
 
-        setTimeout(() => {
-          NavigationService.navigate('DrNotification')
-        }, 1000);
+        var data = remoteMessage.data ?? null
+
+        if(data != null){
+          if(data.category == 'dailyreport'){
+            NavigationService.navigate('DailyReport')
+          }
+          else if(data.category == 'doctornotification'){
+            NavigationService.navigate('DrNotification')
+          }
+          else{
+
+          }
+        }else{
+          // NavigationService.navigate('DrNotification')
+        }
     });
 
-    // Check whether an initial notification is available
+    // App is in Quite State
     messaging()
       .getInitialNotification()
       .then(remoteMessage => {
         if (remoteMessage) {
+
           console.log(
             'Notification caused app to open from quit state:',
-            remoteMessage.notification,
+            remoteMessage, //notification
           );
 
-          // NavigationService.changeStack('DoctorDashboard')
+            setTimeout(() => {
+              //NavigationService.navigate('DrNotification')
 
-          setTimeout(() => {
-            NavigationService.navigate('DrNotification')
-          }, 1000);
+              var data = remoteMessage.data ?? null
+
+              if(data != null){
+                if(data.category == 'dailyreport'){
+                  NavigationService.navigate('DailyReport')
+                }
+                else if(data.category == 'doctornotification'){
+                  NavigationService.navigate('DrNotification')
+                }
+                else{
+
+                }
+              }
+              else{
+                // NavigationService.navigate('DrNotification')
+              }
+            }, 1000);
             
           // setInitialRoute(remoteMessage.data.type); // e.g. "Settings"
         }
-        // setLoading(false);
       });
   }
 

@@ -130,8 +130,8 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.nexton"
-        minSdkVersion rootProject.ext.minSdkVersion
+        applicationId "com.nexton.apps"
+        minSdkVersion 21
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"

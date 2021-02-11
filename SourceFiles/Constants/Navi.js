@@ -8,6 +8,9 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createSwitchNavigator } from "@react-navigation/compat";
 
+import FlashMessage from "react-native-flash-message";
+
+
 //Constants 
 import ConstantImage, { IMG } from '../Constants/ImageConstant';
 import ConstantColor, { CommonColors } from '../Constants/ColorConstant';
@@ -41,6 +44,14 @@ import DrNotification from '../DashboardFlow/Doctor/DrNotification'
 import HospitalDashboard from '../DashboardFlow/Hospital/HospitalDashboard'
 import TimeTable from '../DashboardFlow/Hospital/TimeTable'
 import VisitDetail from '../DashboardFlow/Hospital/VisitDetail'
+import DailyReport from '../DashboardFlow/Hospital/DailyReport'
+import DailyReportDetail from '../DashboardFlow/Hospital/DailyReportDetail'
+
+//Admin Dashboard Flow Files
+import AdminHome from '../DashboardFlow/Admin/AdminHome'
+import Accouting from '../DashboardFlow/Admin/Accouting' 
+import AccoutingDetail from '../DashboardFlow/Admin/AccoutingDetail' 
+import AddTransaction from '../DashboardFlow/Admin/AddTransaction' 
 
 const InitialStack = createStackNavigator()
 const Stack = createStackNavigator()
@@ -77,20 +88,28 @@ const HospitalDashboardStack = (navigation) => {
             <Stack.Screen name="HospitalDashboard" component={HospitalSideMenuFlow} 
                 options = {{
                     headerShown : false
-                    // headerLeft: () => (
-                    //     <NavigationDrawerStructure navigationProps={navigation} />
-                    // ),
-                    // headerStyle: {
-                    //     backgroundColor: '#f4511e', //Set Header color
-                    // },
-                    // headerTintColor: '#fff', //Set Header text color
-                    // headerTitleStyle: {
-                    //     fontWeight: 'bold', //Set Header text style
-                    // },
                 }}
             />
             <Stack.Screen name="TimeTable" component={TimeTable} options={{headerShown:false}} />
-            <Stack.Screen name="VisitDetail" component={VisitDetail} options={{headerShown:false}} />
+            <Stack.Screen name="VisitDetail" component={VisitDetail} options={{headerShown:false}} /> 
+            <Stack.Screen name="DailyReport" component={DailyReport} options={{headerShown:false}} /> 
+            <Stack.Screen name="DailyReportDetail" component={DailyReportDetail} options={{headerShown:false}} />
+        </Stack.Navigator>
+    )
+}
+
+// Admin Stack Flow
+const AdminStack = (navigation) => {
+    return(
+        <Stack.Navigator initialRouteName="AdminHome">
+            <Stack.Screen name="AdminHome" component={AdminSideMenuFlow} 
+                options = {{
+                    headerShown : false
+                }}
+            />
+            <Stack.Screen name="Accouting" component={Accouting} options={{headerShown:false}} />
+            <Stack.Screen name="AccoutingDetail" component={AccoutingDetail} options={{headerShown:false}} /> 
+            <Stack.Screen name="AddTransaction" component={AddTransaction} options={{headerShown:false}} /> 
         </Stack.Navigator>
     )
 }
@@ -156,6 +175,30 @@ const HospitalSideMenuFlow =() => {
     );
 }
 
+
+//Admin SideMenu Flow navigator
+const AdminSideMenuFlow =() => {
+    return(
+        <Drawer.Navigator
+        
+        drawerContent = {(props) => <SideMenu {...props}/>}>
+        
+        <Drawer.Screen
+          name="AdminHome"
+          options={{
+            drawerLabel: 'Dashboard',
+            drawerIcon : ({color}) => (
+                      
+                <Icon name="home" size={20} color={color} />
+            ),
+          }}
+          component={AdminHome}
+        />
+        
+      </Drawer.Navigator>
+    );
+}
+
 const Navi = () => {
 
     const [isLoading , setIsLoading ] = React.useState(true)
@@ -179,9 +222,14 @@ const Navi = () => {
     
             if(userData.role === 'Hospital'){
                 setUserData("HospitalDashboard")
-            }else if(userData.role === 'Doctor'){
+            }
+            else if(userData.role === 'Doctor'){
                 setUserData("DoctorDashboard")
-            }else{
+            }
+            else if(userData.role === 'admin'){
+                setUserData("admin")
+            }
+            else{
                 setUserData("Login")
             }
             setIsLoading(false)
@@ -204,7 +252,8 @@ const Navi = () => {
     const AppNavigator = createSwitchNavigator({
         "Login": RootStackScreen,
         "DoctorDashboard": DoctorDashboardStack,
-        "HospitalDashboard": HospitalDashboardStack
+        "HospitalDashboard": HospitalDashboardStack,
+        "admin" : AdminStack
     }, {
         initialRouteName: "Login",
     });
@@ -212,7 +261,8 @@ const Navi = () => {
     const AppNavigatorDoctor = createSwitchNavigator({
         "Login": RootStackScreen,
         "DoctorDashboard": DoctorDashboardStack,
-        "HospitalDashboard": HospitalDashboardStack
+        "HospitalDashboard": HospitalDashboardStack,
+        "admin" : AdminStack
     }, {
         initialRouteName: "DoctorDashboard",
     });
@@ -220,9 +270,20 @@ const Navi = () => {
     const AppNavigatorHospital = createSwitchNavigator({
         "Login": RootStackScreen,
         "DoctorDashboard": DoctorDashboardStack,
-        "HospitalDashboard": HospitalDashboardStack
+        "HospitalDashboard": HospitalDashboardStack,
+        "admin" : AdminStack
     }, {
         initialRouteName: "HospitalDashboard",
+    });
+
+
+    const AppNavigatorAdmin = createSwitchNavigator({
+        "Login": RootStackScreen,
+        "DoctorDashboard": DoctorDashboardStack,
+        "HospitalDashboard": HospitalDashboardStack,
+        "admin" : AdminStack
+    }, {
+        initialRouteName: "admin",
     });
 
     if(isLoading){
@@ -246,10 +307,14 @@ const Navi = () => {
                     :
                         (userData == "Login" ?
                         <AppNavigator />
-                        :null)
+                        :
+                        (userData == 'admin' ?
+                            <AppNavigatorAdmin/> : null))
                     )
                     
                 }
+                <FlashMessage position="top" icon="info" duration={3000}/>
+
             </NavigationContainer>
         </AuthContext.Provider>
     )

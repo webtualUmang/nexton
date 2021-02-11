@@ -2,7 +2,7 @@ import {Platform,} from 'react-native';
 
 
 export const ConstantKeys = {
-    GOOGLE_KEY:          'AIzaSyD8bw72R-bXhXCfs9BGdyIh_Q-nGfmDpnw', 
+    GOOGLE_KEY:          'AIzaSyBNhS6KxZoIZjMS-c9CcYxxdIdlWjpU4lM', //  AIzaSyD8bw72R-bXhXCfs9BGdyIh_Q-nGfmDpnw
     USERDATA :           "UserData",
     FCM_TOKEN :             "FCM_TOKEN",
     HOSPITAL_INFO :       "HospitalInfo",

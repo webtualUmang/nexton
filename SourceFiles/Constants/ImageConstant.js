@@ -11,5 +11,9 @@ export const IMG = {
         RightArrowIcon : require('../Assets/Images/OtherFlow/ic_right_arrow.png'),
         Notification : require('../Assets/Images/OtherFlow/ic_notification.png'),
         MessageIcon : require('../Assets/Images/OtherFlow/ic_message.png'),
+        PlusIcon : require('../Assets/Images/OtherFlow/ic_plus.png'),
+        RadioIcon : require('../Assets/Images/OtherFlow/ic_Radio.png'),
+        RadioFillIcon : require('../Assets/Images/OtherFlow/ic_RadioFill.png'), 
+        RemoveIcon : require('../Assets/Images/OtherFlow/ic_Remove.png'),
     }
 }

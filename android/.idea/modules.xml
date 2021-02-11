@@ -4,14 +4,18 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Nexton.iml" filepath="$PROJECT_DIR$/Nexton.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1463386198/Nexton.@react-native-async-storage_async-storage.iml" filepath="$PROJECT_DIR$/.idea/modules/1463386198/Nexton.@react-native-async-storage_async-storage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-467250686/Nexton.@react-native-community_geolocation.iml" filepath="$PROJECT_DIR$/.idea/modules/-467250686/Nexton.@react-native-community_geolocation.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1791049128/Nexton.@react-native-firebase_app.iml" filepath="$PROJECT_DIR$/.idea/modules/1791049128/Nexton.@react-native-firebase_app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/627813963/Nexton.@react-native-firebase_messaging.iml" filepath="$PROJECT_DIR$/.idea/modules/627813963/Nexton.@react-native-firebase_messaging.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Nexton.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Nexton.app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1463386198/Nexton.react-native-async-storage_async-storage.iml" filepath="$PROJECT_DIR$/.idea/modules/1463386198/Nexton.react-native-async-storage_async-storage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-467250686/Nexton.react-native-community_geolocation.iml" filepath="$PROJECT_DIR$/.idea/modules/-467250686/Nexton.react-native-community_geolocation.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-670094446/Nexton.react-native-community_masked-view.iml" filepath="$PROJECT_DIR$/.idea/modules/-670094446/Nexton.react-native-community_masked-view.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1525790500/Nexton.react-native-fast-image.iml" filepath="$PROJECT_DIR$/.idea/modules/-1525790500/Nexton.react-native-fast-image.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1791049128/Nexton.react-native-firebase_app.iml" filepath="$PROJECT_DIR$/.idea/modules/1791049128/Nexton.react-native-firebase_app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/627813963/Nexton.react-native-firebase_messaging.iml" filepath="$PROJECT_DIR$/.idea/modules/627813963/Nexton.react-native-firebase_messaging.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1015454085/Nexton.react-native-gesture-handler.iml" filepath="$PROJECT_DIR$/.idea/modules/1015454085/Nexton.react-native-gesture-handler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-186342670/Nexton.react-native-image-picker.iml" filepath="$PROJECT_DIR$/.idea/modules/-186342670/Nexton.react-native-image-picker.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1635405207/Nexton.react-native-linear-gradient.iml" filepath="$PROJECT_DIR$/.idea/modules/1635405207/Nexton.react-native-linear-gradient.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1268030089/Nexton.react-native-reanimated.iml" filepath="$PROJECT_DIR$/.idea/modules/-1268030089/Nexton.react-native-reanimated.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1545168046/Nexton.react-native-safe-area-context.iml" filepath="$PROJECT_DIR$/.idea/modules/1545168046/Nexton.react-native-safe-area-context.iml" />

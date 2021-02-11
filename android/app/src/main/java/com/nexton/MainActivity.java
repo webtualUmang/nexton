@@ -1,4 +1,4 @@
-package com.nexton;
+package com.nexton.apps;
 
 import com.facebook.react.ReactActivity;
 

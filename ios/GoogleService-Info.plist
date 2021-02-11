@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>697224049138-j598eeak46c7rqdr0bicaipe9ul95eb4.apps.googleusercontent.com</string>
+	<string>697224049138-8aao6vapnjp9ght997eo2pvule2gdbht.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.697224049138-j598eeak46c7rqdr0bicaipe9ul95eb4</string>
+	<string>com.googleusercontent.apps.697224049138-8aao6vapnjp9ght997eo2pvule2gdbht</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>697224049138-716gg5el0m7lneduvf3tkicmqugvs712.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAeJbMGwrg1ow05wHYHz8V4ismnzNUdlOE</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,22 +15,22 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.nexton</string>
+	<string>com.nexton.apps</string>
 	<key>PROJECT_ID</key>
 	<string>nexton-b849a</string>
 	<key>STORAGE_BUCKET</key>
 	<string>nexton-b849a.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:697224049138:ios:77042d83d23549fd90fb6b</string>
+	<string>1:697224049138:ios:36582b4d97fde0bd90fb6b</string>
 </dict>
 </plist>

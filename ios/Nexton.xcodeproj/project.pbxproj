@@ -18,7 +18,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* NextonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* NextonTests.m */; };
 		3EEF4BE27B4FF917D32F1517 /* libPods-Nexton-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCB10D57BC6F995CC2909325 /* libPods-Nexton-tvOSTests.a */; };
 		4F517F0A25B5B5FA03CCC020 /* libPods-Nexton.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C637F3B11A000D0AABB8921E /* libPods-Nexton.a */; };
-		5892EA1525A98AAE007AD3A6 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5892EA1425A98AAE007AD3A6 /* FontAwesome.ttf */; };
+		58712B8625C91F7C00B4C5D1 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58712B8525C91F7C00B4C5D1 /* FontAwesome.ttf */; };
 		58AE16FD25A7033B0003228A /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58AE16F425A7033B0003228A /* Inter-Medium.ttf */; };
 		58AE16FE25A7033B0003228A /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58AE16F525A7033B0003228A /* Inter-Light.ttf */; };
 		58AE16FF25A7033B0003228A /* Inter-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58AE16F625A7033B0003228A /* Inter-Thin.ttf */; };
@@ -67,7 +67,7 @@
 		25683FB639E489AD2070A8E2 /* Pods-Nexton-NextonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nexton-NextonTests.debug.xcconfig"; path = "Target Support Files/Pods-Nexton-NextonTests/Pods-Nexton-NextonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* Nexton-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nexton-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* Nexton-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Nexton-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5892EA1425A98AAE007AD3A6 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		58712B8525C91F7C00B4C5D1 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		58AE16F425A7033B0003228A /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
 		58AE16F525A7033B0003228A /* Inter-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.ttf"; sourceTree = "<group>"; };
 		58AE16F625A7033B0003228A /* Inter-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Thin.ttf"; sourceTree = "<group>"; };
@@ -178,7 +178,7 @@
 		58AE16F325A7033B0003228A /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				5892EA1425A98AAE007AD3A6 /* FontAwesome.ttf */,
+				58712B8525C91F7C00B4C5D1 /* FontAwesome.ttf */,
 				58AE16F425A7033B0003228A /* Inter-Medium.ttf */,
 				58AE16F525A7033B0003228A /* Inter-Light.ttf */,
 				58AE16F625A7033B0003228A /* Inter-Thin.ttf */,
@@ -347,7 +347,7 @@
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = PX6685FB74;
 						LastSwiftMigration = 1120;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -394,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58F566F625C17E480068EC80 /* GoogleService-Info.plist in Resources */,
+				58712B8625C91F7C00B4C5D1 /* FontAwesome.ttf in Resources */,
 				58AE170025A7033B0003228A /* Inter-Bold.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
@@ -405,7 +406,6 @@
 				58AE170425A7033B0003228A /* Inter-Black.ttf in Resources */,
 				58AE170325A7033B0003228A /* Inter-ExtraLight.ttf in Resources */,
 				58AE170125A7033B0003228A /* Inter-Regular.ttf in Resources */,
-				5892EA1525A98AAE007AD3A6 /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,22 +730,24 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Nexton/Nexton.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.1;
 				DEVELOPMENT_TEAM = PX6685FB74;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Nexton/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nexton;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nexton.apps;
 				PRODUCT_NAME = Nexton;
-				PROVISIONING_PROFILE_SPECIFIER = Nexton_Dev;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -759,20 +761,22 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Nexton/Nexton.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.1;
 				DEVELOPMENT_TEAM = PX6685FB74;
 				INFOPLIST_FILE = Nexton/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nexton;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nexton.apps;
 				PRODUCT_NAME = Nexton;
-				PROVISIONING_PROFILE_SPECIFIER = Nexton_Dev;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

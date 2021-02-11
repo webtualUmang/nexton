@@ -184,27 +184,16 @@ export default class VisitDetail extends Component {
                     <View style={{ flex: 1 }}>
                         {this.state.isLoading == false ?
                             <ScrollView style={{ flex: 1 }}>
-                                <View style={{
-                                    marginTop: 30, marginLeft: 20, marginRight: 20, backgroundColor: CommonColors.whiteColor,
-                                    shadowColor: CommonColors.shadowColor, borderRadius: 10,
-                                    shadowOffset: { width: 0, height: 0 }, shadowOpacity: 0.4,
-                                    shadowRadius: 5, elevation: 5,marginBottom : 10
-                                }}>
+                                <View style={styles.MainCardView}>
 
-                                    <Text style={{
-                                        marginTop: 10, marginLeft: 20, marginRight: 20,
-                                        fontSize: SetFontSize.setDimension.ts22, fontFamily: ConstantKeys.INTER_EXTRA_BOLD, color: CommonColors.denim
-                                    }}>
+                                    <Text style={styles.txtDoctorName}>
                                         Doctor : {this.state.DoctorDetail.name}
                                     </Text>
 
                                     <View style={{ height: 1, backgroundColor: CommonColors.darkGray, marginTop: 10 }}></View>
 
                                     <View style={{ marginTop: 10, flexDirection: 'row', alignItems: 'center' }}>
-                                        <Text style={{
-                                            marginLeft: 20, marginRight: 20, flex: 1,
-                                            fontSize: SetFontSize.setDimension.ts18, fontFamily: ConstantKeys.INTER_REGULAR, color: CommonColors.darkGray
-                                        }}>
+                                        <Text style={styles.txtMobileNo}>
                                             Mobile No : {this.state.DoctorDetail.mobile}
                                         </Text>
                                         {/* <TouchableOpacity style={{ marginRight: 15, height: 30, width: 30, alignItems: 'center', justifyContent: 'center' }}
@@ -214,32 +203,23 @@ export default class VisitDetail extends Component {
                                         </TouchableOpacity> */}
                                     </View>
 
-                                    <Text style={{
-                                        marginTop: 5, marginLeft: 20, marginRight: 20,
-                                        fontSize: SetFontSize.setDimension.ts18, fontFamily: ConstantKeys.INTER_REGULAR, color: CommonColors.darkGray
-                                    }}>
+                                    <Text style={styles.txtEmailID}>
                                         Email : {this.state.DoctorDetail.email}
                                     </Text>
 
-                                    <Text style={{
-                                        marginTop: 10, marginLeft: 20, marginRight: 20,
-                                        fontSize: SetFontSize.setDimension.ts18, fontFamily: ConstantKeys.INTER_REGULAR, color: CommonColors.darkGray
-                                    }}>
+                                    <Text style={styles.txtDegree}>
                                         Degree : {this.state.DoctorDetail.degree}
                                     </Text>
 
-                                    <Text style={{
-                                        marginTop: 10, marginLeft: 20, marginRight: 20, marginBottom: 10,
-                                        fontSize: SetFontSize.setDimension.ts18, fontFamily: ConstantKeys.INTER_REGULAR, color: CommonColors.darkGray
-                                    }}>
+                                    <Text style={styles.txtExperianse}>
                                         Experience : {this.state.DoctorDetail.experience} Years
                                     </Text>
 
                                     <View style={{flex:1, flexDirection:'row'}}>
                                         <TouchableOpacity style={{flex:0.5}}
                                             onPress={() => Linking.openURL(`tel:${this.state.DoctorDetail.mobile}`)}>
-                                            <View style={{flex:1, height: 50, backgroundColor:CommonColors.denim, 
-                                                    borderBottomLeftRadius:10, justifyContent:'center',alignItems:'center'}}>
+
+                                            <View style={styles.ViewCall}>
 
                                                 <Image style={{ height: 25, width: 25, resizeMode: 'contain', tintColor: CommonColors.whiteColor }}
                                                     source={CallIcon} />
@@ -250,7 +230,7 @@ export default class VisitDetail extends Component {
 
                                         <TouchableOpacity style={{flex:0.5}}
                                             onPress={() => this.setState({OpenMessageDialog : true})}>
-                                            <View style={{flex:1, height: 50, backgroundColor:CommonColors.denim, borderBottomRightRadius:10, justifyContent:'center',alignItems:'center'}}>
+                                            <View style={styles.MessageView}>
                                                 <Image style={{ height: 25, width: 25, resizeMode: 'contain', tintColor: CommonColors.whiteColor  }}
                                                     source={MessageIcon} />
                                             </View>
@@ -305,4 +285,44 @@ const styles = StyleSheet.create({
         fontFamily: ConstantKeys.INTER_EXTRA_BOLD, fontSize: 20,
         color: CommonColors.whiteColor, flex: 1, textAlign: 'center'
     },
+    MainCardView: {
+        marginTop: 30, marginLeft: 20, marginRight: 20, backgroundColor: CommonColors.whiteColor,
+        shadowColor: CommonColors.shadowColor, borderRadius: 10,
+        shadowOffset: { width: 0, height: 0 }, shadowOpacity: 0.4,
+        shadowRadius: 5, elevation: 5, marginBottom: 10
+    },
+    txtDoctorName: {
+        marginTop: 10, marginLeft: 20, marginRight: 20,
+        fontSize: SetFontSize.setDimension.ts22,
+        fontFamily: ConstantKeys.INTER_EXTRA_BOLD, color: CommonColors.denim
+    },
+    txtMobileNo: {
+        marginLeft: 20, marginRight: 20, flex: 1,
+        fontSize: SetFontSize.setDimension.ts18,
+        fontFamily: ConstantKeys.INTER_REGULAR, color: CommonColors.darkGray
+    },
+    txtEmailID: {
+        marginTop: 5, marginLeft: 20, marginRight: 20,
+        fontSize: SetFontSize.setDimension.ts18,
+        fontFamily: ConstantKeys.INTER_REGULAR, color: CommonColors.darkGray
+    },
+    txtDegree: {
+        marginTop: 10, marginLeft: 20, marginRight: 20,
+        fontSize: SetFontSize.setDimension.ts18,
+        fontFamily: ConstantKeys.INTER_REGULAR, color: CommonColors.darkGray
+    },
+    txtExperianse: {
+        marginTop: 10, marginLeft: 20, marginRight: 20, marginBottom: 10,
+        fontSize: SetFontSize.setDimension.ts18,
+        fontFamily: ConstantKeys.INTER_REGULAR, color: CommonColors.darkGray
+    },
+    ViewCall: {
+        flex: 1, height: 50, backgroundColor: CommonColors.denim,
+        borderBottomLeftRadius: 10, justifyContent: 'center', 
+        alignItems: 'center'
+    },
+    MessageView:{
+        flex:1, height: 50, backgroundColor:CommonColors.denim, 
+        borderBottomRightRadius:10, justifyContent:'center',alignItems:'center'
+    }
 })
